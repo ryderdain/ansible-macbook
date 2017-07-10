@@ -22,12 +22,19 @@
     - "gpgtools"
     - "opensc"
     - "viscosity"
+    - "yubikey-neo-manager"
+    - "yubikey-personalization-gui"
+    - "yubikey-piv-manager"
+    - "spotify"
+    - "LyX"
 
   tasks:
     - name: Install homebrew packages
       homebrew: name="{{item}}" state="present"
       become: "false"
       with_items: "{{homebrew_list}}"
+      tags:
+      - "homebrew"
 
     - name: custom cask files
       copy: src="files/cask/opensc.rb" dest="/usr/local/Homebrew/Library/Taps/caskroom/homebrew-cask/Casks/opensc.rb"
@@ -38,6 +45,8 @@
       homebrew_cask: name="{{item}}" state="present"
       become: "false"
       with_items: "{{app_list}}"
+      tags:
+      - "apps"
 
 
     - name: copy Spectacle shortcuts
