@@ -56,3 +56,24 @@
     - name: copy Spectacle shortcuts
       copy: src="files/spectacle/Shortcuts.json" dest="~/Library/Application Support/Spectacle/Shortcuts.json"
       become: "false"
+
+    - name: Remove all items from the Dock
+      become: "false"
+      shell: /usr/local/bin/dockutil --remove all
+      tags:
+      - "dock"
+
+    - name: Set the default Dock items
+      become: "false"
+      shell: "/usr/local/bin/dockutil --add {{ item }} --no-restart"
+      with_items:
+        - '/Applications/Calendar.app'
+        - '/Applications/Google\ Chrome.app'
+        - '/Applications/Adium.app'
+      tags:
+      - "dock"
+    - name: Sets Downloads folder and restarts dock
+      become: "false"
+      shell: "/usr/local/bin/dockutil --add ~/Downloads --section others"
+      tags:
+      - "dock"
