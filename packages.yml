@@ -8,6 +8,8 @@
     - "neomutt"
     - "git"
     - "wget"
+    - "dockutil"
+    - "m-cli"
     
     app_list:
     - "adium"
@@ -27,6 +29,8 @@
     - "yubikey-piv-manager"
     - "spotify"
     - "LyX"
+    - "wireshark"
+    - "macvim"
 
   tasks:
     - name: Install homebrew packages
