@@ -1,0 +1,42 @@
+---
+- hosts: localhost
+
+  vars:
+    homebrew_list:
+    - "cask"
+    - "tmux"
+    
+    app_list:
+    - "adium"
+    - "google-chrome"
+    - "iterm2"
+    - "libreoffice"
+    - "spectacle"
+    - "keepassxc"
+    - "virtualbox"
+    - "virtualbox-extension-pack"
+    - "vagrant"
+    - "gpgtools"
+    - "opensc"
+    - "viscosity"
+
+  tasks:
+    - name: Install homebrew packages
+      homebrew: name="{{item}}" state="present"
+      become: "false"
+      with_items: "{{homebrew_list}}"
+
+    - name: custom cask files
+      copy: src="files/cask/opensc.rb" dest="/usr/local/Homebrew/Library/Taps/caskroom/homebrew-cask/Casks/opensc.rb"
+      # https://bitbucket.org/objective-see/deploy/downloads/BlockBlock_0.9.7.zip
+
+
+    - name: Install apps
+      homebrew_cask: name="{{item}}" state="present"
+      become: "false"
+      with_items: "{{app_list}}"
+
+
+    - name: copy Spectacle shortcuts
+      copy: src="files/spectacle/Shortcuts.json" dest="~/Library/Application Support/Spectacle/Shortcuts.json"
+      become: "false"
