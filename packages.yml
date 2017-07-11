@@ -77,3 +77,8 @@
       shell: "/usr/local/bin/dockutil --add ~/Downloads --section others"
       tags:
       - "dock"
+
+    - name: Prevent the system from sleeping
+      shell: "systemsetup -setcomputersleep Off"
+      tags:
+      - "system"
