@@ -33,6 +33,7 @@
     - "spotify"
     - "wireshark"
     - "macvim"
+    - "xquartz"
 #    - "LyX"
 
   tasks:
