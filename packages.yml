@@ -148,3 +148,8 @@
       shell: systemsetup -setremoteappleevents off
       tags:
       - "system"
+
+    - name: disable remote login
+      shell: systemsetup -getremotelogin off
+      tags:
+      - "system"
