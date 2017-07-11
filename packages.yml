@@ -36,6 +36,7 @@
     - "macvim"
     - "xquartz"
     - "macports"
+    - "blockblock"
 #    - "LyX"
 
   tasks:
