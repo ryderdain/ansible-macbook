@@ -10,6 +10,9 @@
     - "wget"
     - "dockutil"
     - "m-cli"
+
+    tap_list:
+    - "caskroom/drivers"
     
     app_list:
     - "adium"
@@ -39,6 +42,13 @@
       with_items: "{{homebrew_list}}"
       tags:
       - "homebrew"
+
+    - name: Install caskroom drivers
+      homebrew_tap: name="{{item}}" state="present"
+      become: "false"
+      with_items: "{{tap_list}}"
+      tags:
+      - "apps"
 
     - name: custom cask files
       copy: src="files/cask/opensc.rb" dest="/usr/local/Homebrew/Library/Taps/caskroom/homebrew-cask/Casks/opensc.rb"
