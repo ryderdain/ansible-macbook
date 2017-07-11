@@ -6,6 +6,7 @@
     - "cask"
     - "tmux"
     - "neomutt"
+    - "aspell"
     - "git"
     - "wget"
     - "dockutil"
@@ -34,6 +35,7 @@
     - "wireshark"
     - "macvim"
     - "xquartz"
+    - "macports"
 #    - "LyX"
 
   tasks:
