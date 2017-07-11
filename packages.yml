@@ -92,3 +92,8 @@
       osx_defaults: domain="NSGlobalDomain" key="NSDocumentSaveNewDocumentsToCloud" type="bool" value="false" state="present"
       tags:
       - "system"
+
+    - name: disable natural scrolling
+      osx_defaults: domain="NSGlobalDomain" key="com.apple.swipescrolldirection" type="bool" value="false" state="present"
+      tags:
+      - "system"
