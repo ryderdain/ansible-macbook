@@ -110,31 +110,31 @@
       - "system"
 
     - name: don't save to icloud by default
-      osx_defaults: domain="NSGlobalDomain" key="NSDocumentSaveNewDocumentsToCloud" type="bool" value="false" state="present"
+      shell: defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
       tags:
       - "system"
 
     - name: disable natural scrolling
-      osx_defaults: domain="NSGlobalDomain" key="com.apple.swipescrolldirection" type="bool" value="false" state="present"
+      shell: defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
       tags:
       - "system"
 
     - name: Ask for password when screensaver starts
-      osx_defaults: domain="com.apple.screensaver" key="askForPassword" type="int" value="1" state="present"
+      shell: defaults write com.apple.screensaver askForPassword -int 1
       tags:
       - "system"
 
     - name: Ask for password when screensaver starts. Delay
-      osx_defaults: domain="com.apple.screensaver" key="askForPasswordDelay" type="int" value="0" state="present"
+      shell: defaults write com.apple.screensaver askForPasswordDelay -int 0
       tags:
       - "system"
 
     - name: Don't write .DS_Store files on network volumes
-      osx_defaults: domain="com.apple.desktopservices" key="DSDontWriteNetworkStores" type="bool" value="true" state="present"
+      shell: defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
       tags:
       - "system"
 
     - name: Don't write .DS_Store files on USB volumes
-      osx_defaults: domain="com.apple.desktopservices" key="DSDontWriteUSBStores" type="bool" value="true" state="present"
+      shell: defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
       tags:
       - "system"
