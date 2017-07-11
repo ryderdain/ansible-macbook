@@ -42,8 +42,8 @@
 
     - name: custom cask files
       copy: src="files/cask/opensc.rb" dest="/usr/local/Homebrew/Library/Taps/caskroom/homebrew-cask/Casks/opensc.rb"
-      # https://bitbucket.org/objective-see/deploy/downloads/BlockBlock_0.9.7.zip
-
+      tags:
+      - "apps"
 
     - name: Install apps
       homebrew_cask: name="{{item}}" state="present"
