@@ -138,3 +138,8 @@
       shell: defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
       tags:
       - "system"
+
+    - name: enable auto updates
+      shell: sudo softwareupdate --schedule on
+      tags:
+      - "system"
