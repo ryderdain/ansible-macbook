@@ -87,3 +87,8 @@
       shell: nvram SystemAudioVolume=" "
       tags:
       - "system"
+
+    - name: don't save to icloud by default
+      osx_defaults: domain="NSGlobalDomain" key="NSDocumentSaveNewDocumentsToCloud" type="bool" value="false" state="present"
+      tags:
+      - "system"
