@@ -31,9 +31,9 @@
     - "yubikey-personalization-gui"
     - "yubikey-piv-manager"
     - "spotify"
-    - "LyX"
     - "wireshark"
     - "macvim"
+#    - "LyX"
 
   tasks:
     - name: Install homebrew packages
@@ -62,10 +62,17 @@
       tags:
       - "apps"
 
+    - name: create config dir for Spectacle
+      file: path="~/Library/Application Support/Spectacle/" state="directory"
+      become: "false"
+      tags:
+      - "apps"
 
     - name: copy Spectacle shortcuts
       copy: src="files/spectacle/Shortcuts.json" dest="~/Library/Application Support/Spectacle/Shortcuts.json"
       become: "false"
+      tags:
+      - "apps"
 
     - name: Remove all items from the Dock
       become: "false"
