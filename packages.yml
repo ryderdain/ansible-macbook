@@ -140,6 +140,11 @@
       - "system"
 
     - name: enable auto updates
-      shell: sudo softwareupdate --schedule on
+      shell: softwareupdate --schedule on
+      tags:
+      - "system"
+
+    - name: disable remote events
+      shell: systemsetup -setremoteappleevents off
       tags:
       - "system"
