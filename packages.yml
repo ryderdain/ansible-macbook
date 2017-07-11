@@ -82,3 +82,8 @@
       shell: "systemsetup -setcomputersleep Off"
       tags:
       - "system"
+
+    - name: Disable the sound effects on boot
+      shell: nvram SystemAudioVolume=" "
+      tags:
+      - "system"
