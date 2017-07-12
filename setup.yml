@@ -186,7 +186,20 @@
       tags:
       - "system"
 
+    - name: application firewall. Disable signed apps being automatically whitelisted
+      shell: /usr/libexec/ApplicationFirewall/socketfilterfw {{item}} off
+      with_items:
+      - "--setallowsigned"
+      - "--setallowsignedapp"
+      tags:
+      - "system"
+
     - name: application firewall. Incoming ssh for Vagrant
       shell: /usr/libexec/ApplicationFirewall/socketfilterfw --add /usr/libexec/sshd-keygen-wrapper
+      tags:
+      - "system"
+
+    - name: reload the firewall
+      shell: /usr/libexec/ApplicationFirewall/socketfilterfw -k
       tags:
       - "system"
