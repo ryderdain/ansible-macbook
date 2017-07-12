@@ -100,6 +100,7 @@
       tags:
       - "dock"
 
+    # https://github.com/drduh/macOS-Security-and-Privacy-Guide
     - name: Prevent the system from sleeping
       shell: "systemsetup -setcomputersleep Off"
       tags:
