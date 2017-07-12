@@ -115,7 +115,7 @@
       - "system"
 
     - name: disable mouse acceleration. Doesn't work in sierra
-      shell: defaults write .GlobalPreferences com.apple.mouse.scaling -1
+      shell: defaults write .GlobalPreferences com.apple.mouse.scaling 0
       tags:
       - "system"
 
