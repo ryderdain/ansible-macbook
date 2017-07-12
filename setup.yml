@@ -6,6 +6,7 @@
     - "cask"
     - "tmux"
     - "neomutt"
+    - "lbdb"
     - "aspell"
     - "git"
     - "wget"
@@ -45,6 +46,12 @@
       homebrew: name="{{item}}" state="present"
       become: "false"
       with_items: "{{homebrew_list}}"
+      tags:
+      - "homebrew"
+
+    - name: copy lbdb config
+      copy: src="files/lbdb/lbdbrc" dest="~/.lbdbrc"
+      become: "false"
       tags:
       - "homebrew"
 
