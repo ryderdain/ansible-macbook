@@ -169,3 +169,22 @@
       shell: /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -stop
       tags:
       - "system"
+
+    - name: disable remote management
+      shell: /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -stop
+      tags:
+      - "system"
+
+    - name: application firewall
+      shell: /usr/libexec/ApplicationFirewall/socketfilterfw {{item}} on
+      with_items:
+      - "--setglobalstate"
+      - "--setloggingmode"
+      - "--setstealthmode"
+      tags:
+      - "system"
+
+    - name: application firewall. Incoming ssh for Vagrant
+      shell: /usr/libexec/ApplicationFirewall/socketfilterfw --add /usr/libexec/sshd-keygen-wrapper
+      tags:
+      - "system"
