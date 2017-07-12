@@ -175,6 +175,7 @@
       tags:
       - "system"
 
+   # http://krypted.com/tag/socketfilterfw/
     - name: application firewall
       shell: /usr/libexec/ApplicationFirewall/socketfilterfw {{item}} on
       with_items:
