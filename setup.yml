@@ -5,6 +5,7 @@
     homebrew_list:
     - "cask"
     - "tmux"
+    - "reattach-to-user-namespace"
     - "neomutt"
     - "lbdb"
     - "aspell"
