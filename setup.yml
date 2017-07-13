@@ -1,4 +1,9 @@
 ---
+
+##
+## TODO: implement https://github.com/kristovatlas/osx-config-check/blob/master/osx-config.hjson
+##
+
 - hosts: localhost
 
   vars:
