@@ -56,6 +56,12 @@
       tags:
       - "homebrew"
 
+    - name: copy tmux config
+      copy: src="files/tmux/tmux.conf" dest="~/.tmux.conf"
+      become: "false"
+      tags:
+      - "homebrew"
+
     - name: Install caskroom drivers
       homebrew_tap: name="{{item}}" state="present"
       become: "false"
