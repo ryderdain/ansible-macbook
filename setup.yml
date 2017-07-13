@@ -129,42 +129,56 @@
       - "system"
 
     - name: don't save to icloud by default
-      shell: defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+      shell: defaults -currentHost  write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+      become: "false"
       tags:
       - "system"
 
     - name: disable mouse acceleration. Doesn't work in sierra
-      shell: defaults write .GlobalPreferences com.apple.mouse.scaling 0.125
+      shell: defaults -currentHost  write .GlobalPreferences com.apple.mouse.scaling 0.125
+      become: "false"
       tags:
       - "system"
 
 #    - name: swap left/right button in the mouse
-#      shell: defaults write .GlobalPreferences com.apple.mouse.swapLeftRightButton -bool true
+#      shell: defaults -currentHost  write .GlobalPreferences com.apple.mouse.swapLeftRightButton -bool true
+#      become: "false"
 #      tags:
 #      - "system"
 
     - name: disable natural scrolling
-      shell: defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
+      shell: defaults -currentHost  write NSGlobalDomain com.apple.swipescrolldirection -bool false
+      become: "false"
       tags:
       - "system"
 
     - name: Ask for password when screensaver starts
-      shell: defaults write com.apple.screensaver askForPassword -int 1
+      shell: defaults -currentHost  write com.apple.screensaver askForPassword -int 1
+      become: "false"
       tags:
       - "system"
 
     - name: Ask for password when screensaver starts. Delay
-      shell: defaults write com.apple.screensaver askForPasswordDelay -int 0
+      shell: defaults -currentHost  write com.apple.screensaver askForPasswordDelay -int 0
+      become: "false"
+      tags:
+      - "system"
+
+    - name: Ask for password when screensaver starts. Idle time
+      shell: defaults -currentHost  write com.apple.screensaver idleTime -int 120
+      become: "false"
       tags:
       - "system"
 
     - name: Don't write .DS_Store files on network volumes
-      shell: defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+      shell: defaults -currentHost  write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+      become: "false"
       tags:
       - "system"
 
     - name: Don't write .DS_Store files on USB volumes
-      shell: defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+      shell: defaults -currentHost  write com.apple.desktopservices DSDontWriteUSBStores -bool true
+      become: "false"
       tags:
       - "system"
 
@@ -223,6 +237,6 @@
 
 
     - name: disable the captive portal
-      shell: defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.control Active -bool false
+      shell: defaults -currentHost  write /Library/Preferences/SystemConfiguration/com.apple.captive.control Active -bool false
       tags:
       - "system"
