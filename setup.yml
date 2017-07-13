@@ -7,6 +7,7 @@
     - "tmux"
     - "reattach-to-user-namespace"
     - "neomutt"
+    - "urlview"
     - "lbdb"
     - "aspell"
     - "git"
