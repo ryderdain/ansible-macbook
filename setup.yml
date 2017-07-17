@@ -269,3 +269,45 @@
       shell: defaults -currentHost  write /Library/Preferences/SystemConfiguration/com.apple.captive.control Active -bool false
       tags:
       - "system"
+
+    - name: show all hidden files (system)
+      shell: defaults -currentHost write /Library/Preferences/SystemConfiguration/com.apple.finder AppleShowAllFiles -bool true && killall Dock
+      become: "true"
+      tags:
+      - "system"
+
+    - name: show all hidden files (user)
+      shell: defaults -currentHost write "~/Library/Preferences/SystemConfiguration/com.apple.finder" AppleShowAllFiles -bool true && killall Dock
+      become: "false"
+      tags:
+      - "system"
+
+    - name: disable bluetooth
+      shell: defaults write /Library/Preferences/com.apple.Bluetooth ControllerPowerState -bool false; killall -HUP blued
+      become: "true"
+      tags:
+      - "system"
+
+    - name: disable IR
+      shell: defaults write /Library/Preferences/com.apple.driver.AppleIRController DeviceEnabled -bool false
+      become: "true"
+      tags:
+      - "system"
+
+    - name: disable AirDrop
+      shell: defaults write com.apple.NetworkBrowser DisableAirDrop -bool true
+      become: "true"
+      tags:
+      - "system"
+
+    - name: disable file sharing
+      shell: launchctl unload -w /System/Library/LaunchDaemons/com.apple.AppleFileServer.plist; launchctl unload -w /System/Library/LaunchDaemons/com.apple.smbd.plist
+      become: "false"
+      tags:
+      - "system"
+
+    - name: disable printer sharing
+      shell: cupsctl --no-share-printers
+      become: "false"
+      tags:
+      - "system"
