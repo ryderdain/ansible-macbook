@@ -157,32 +157,56 @@
       tags:
       - "system"
 
-    - name: Ask for password when screensaver starts
-      shell: defaults -currentHost  write com.apple.screensaver askForPassword -int 1
+    - name: Ask for password when screensaver starts (system)
+      shell: defaults -currentHost  write "/Library/Preferences/com.apple.screensaver" askForPassword -int 1
+      become: "true"
+      tags:
+      - "system"
+
+    - name: Ask for password when screensaver starts (user)
+      shell: defaults -currentHost  write "~/Library/Preferences/com.apple.screensaver" askForPassword -int 1
       become: "false"
       tags:
       - "system"
 
-    - name: Ask for password when screensaver starts. Delay
-      shell: defaults -currentHost  write com.apple.screensaver askForPasswordDelay -int 0
+    - name: Ask for password when screensaver starts. Delay (system)
+      shell: defaults -currentHost  write "/Library/Preferences/com.apple.screensaver" askForPasswordDelay -int 0
+      become: "true"
+      tags:
+      - "system"
+
+    - name: Ask for password when screensaver starts. Delay (user)
+      shell: defaults -currentHost  write "~/Library/Preferences/com.apple.screensaver" askForPasswordDelay -int 0
       become: "false"
       tags:
       - "system"
 
-    - name: Ask for password when screensaver starts. Idle time
-      shell: defaults -currentHost  write com.apple.screensaver idleTime -int 120
+    - name: Ask for password when screensaver starts. Idle time (system)
+      shell: defaults -currentHost  write "/Library/Preferences/com.apple.screensaver" idleTime -int 120
+      become: "true"
+      tags:
+      - "system"
+
+    - name: Ask for password when screensaver starts. Idle time (user)
+      shell: defaults -currentHost  write "~/Library/Preferences/com.apple.screensaver" idleTime -int 120
       become: "false"
       tags:
       - "system"
 
-    - name: Don't write .DS_Store files on network volumes
-      shell: defaults -currentHost  write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-      become: "false"
+    - name: Don't write .DS_Store files on network volumes (system)
+      shell: defaults -currentHost  write "/Library/Preferences/com.apple.desktopservices" {{item}} -bool true
+      become: "true"
+      with_items:
+       - "DSDontWriteNetworkStores"
+       - "DSDontWriteUSBStores"
       tags:
       - "system"
 
-    - name: Don't write .DS_Store files on USB volumes
-      shell: defaults -currentHost  write com.apple.desktopservices DSDontWriteUSBStores -bool true
+    - name: Don't write .DS_Store files on network volumes (user)
+      shell: defaults -currentHost  write "~/Library/Preferences/com.apple.desktopservices" {{item}} -bool true
+      with_items:
+       - "DSDontWriteNetworkStores"
+       - "DSDontWriteUSBStores"
       become: "false"
       tags:
       - "system"
